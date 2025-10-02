@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InsureYouAI.Migrations
 {
     [DbContext(typeof(InsureContext))]
-    [Migration("20251002143958_create_database")]
+    [Migration("20251002204936_create_database")]
     partial class create_database
     {
         /// <inheritdoc />
@@ -319,12 +319,17 @@ namespace InsureYouAI.Migrations
             modelBuilder.Entity("InsureYouAI.Entities.Article", b =>
                 {
                     b.HasOne("InsureYouAI.Entities.Category", "Category")
-                        .WithMany()
+                        .WithMany("Articles")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("InsureYouAI.Entities.Category", b =>
+                {
+                    b.Navigation("Articles");
                 });
 #pragma warning restore 612, 618
         }
