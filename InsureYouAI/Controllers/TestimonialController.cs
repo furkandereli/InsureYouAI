@@ -1,0 +1,51 @@
+﻿using InsureYouAI.Context;
+using InsureYouAI.Entities;
+using Microsoft.AspNetCore.Mvc;
+
+namespace InsureYouAI.Controllers;
+
+public class TestimonialController(InsureContext context) : Controller
+{
+    public IActionResult TestimonialList()
+    {
+        var values = context.Testimonials.ToList();
+        return View(values);
+    }
+
+    [HttpGet]
+    public IActionResult CreateTestimonial()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult CreateTestimonial(Testimonial testimonial)
+    {
+        context.Testimonials.Add(testimonial);
+        context.SaveChanges();
+        return RedirectToAction("TestimonialList");
+    }
+
+    [HttpGet]
+    public IActionResult UpdateTestimonial(int id)
+    {
+        var value = context.Testimonials.Find(id);
+        return View(value);
+    }
+
+    [HttpPost]
+    public IActionResult UpdateTestimonial(Testimonial testimonial)
+    {
+        var value = context.Testimonials.Update(testimonial);
+        context.SaveChanges();
+        return RedirectToAction("TestimonialList");
+    }
+
+    public IActionResult DeleteTestimonial(int id)
+    {
+        var value = context.Testimonials.Find(id);
+        context.Testimonials.Remove(value);
+        context.SaveChanges();
+        return RedirectToAction("TestimonialList");
+    }
+}
