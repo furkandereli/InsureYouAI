@@ -22,5 +22,6 @@ public class InsureContext : IdentityDbContext<AppUser>
     public DbSet<Slider> Sliders { get; set; }
     public DbSet<Testimonial> Testimonials { get; set; }
     public DbSet<TrailerVideo> TrailerVideos { get; set; }
+    public DbSet<Comment> Comments { get; set; }
 
 }
