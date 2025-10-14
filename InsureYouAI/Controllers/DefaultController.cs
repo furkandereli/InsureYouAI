@@ -19,5 +19,16 @@ namespace InsureYouAI.Controllers
         {
             return View();
         }
+
+        public PartialViewResult SubscribeEmail()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public IActionResult SubscribeEmail(string email)
+        {
+            return View();
+        }
     }
 }
