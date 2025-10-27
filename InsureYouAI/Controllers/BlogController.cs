@@ -9,11 +9,16 @@ public class BlogController : Controller
         return View();
     }
 
+    public IActionResult BlogDetail()
+    {
+        return View();
+    }
+
     public PartialViewResult GetBlog()
     {
         return PartialView();
     }
-    
+
     [HttpPost]
     public IActionResult GetBlog(string keyword)
     {
