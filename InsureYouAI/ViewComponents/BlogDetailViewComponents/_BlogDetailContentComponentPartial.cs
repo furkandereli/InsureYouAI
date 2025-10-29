@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using InsureYouAI.Context;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InsureYouAI.ViewComponents.BlogDetailViewComponents;
 
-public class _BlogDetailContentComponentPartial : ViewComponent
+public class _BlogDetailContentComponentPartial(InsureContext context) : ViewComponent
 {
-    public IViewComponentResult Invoke()
+    public IViewComponentResult Invoke(int id)
     {
-        return View();
+        var values = context.Articles.Where(x => x.ArticleId == id).FirstOrDefault();
+        return View(values);
     }
 }
