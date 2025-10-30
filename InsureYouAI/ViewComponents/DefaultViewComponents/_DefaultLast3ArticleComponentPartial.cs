@@ -8,7 +8,7 @@ public class _DefaultLast3ArticleComponentPartial(InsureContext context) : ViewC
 {
     public IViewComponentResult Invoke()
     {
-        var values = context.Articles.OrderByDescending(x => x.ArticleId).Include(y => y.Category).Take(3).ToList();
+        var values = context.Articles.OrderByDescending(x => x.ArticleId).Include(y => y.Category).Include(z => z.AppUser).Take(3).ToList();
         return View(values);
     }
 }
