@@ -13,4 +13,5 @@ public class AppUser : IdentityUser
     public string? Education { get; set; }
     public string? City { get; set; }
     public string? Title { get; set; }
+    public List<Policy> Policies { get; set; }
 }
