@@ -14,13 +14,11 @@ public class PolicySalesForecast
     public float[] ForecastedValues { get; set; }
     public float[] LowerBoundValues { get; set; }
     public float[] UpperBoundValues { get; set; }
-
 }
 
 public class ForecastService
 {
     private readonly MLContext _mlContext;
-
     public ForecastService()
     {
         _mlContext = new MLContext();
